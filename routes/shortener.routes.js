@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { getShortenerPage, postURLShortener, redirectToShortLink } from "../controllers/postURLShortener.controller.js";
+
+const router = Router();
+
+router.get("/", getShortenerPage);
+
+router.post("/", postURLShortener);
+
+router.get("/:shortCode", redirectToShortLink);
+
+export const shortenerURL = router;
