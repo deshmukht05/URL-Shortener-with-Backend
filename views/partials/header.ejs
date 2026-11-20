@@ -1,29 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Custom Branded Logo -->
+    <a href="/" class="logo" aria-label="URLShortener Home">
+      <span class="logo-mark">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="logo-spark"></span>
+      </span>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/material-design-iconic-font@2.2.0/dist/css/material-design-iconic-font.min.css"
-    />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <header>
-        <div class="logo">
-          <a href="/">URL Shortener</a>
-        </div>
+      <span class="logo-wordmark">
+        <span class="logo-title">URL<span class="logo-accent">Shortener</span></span>
+        <span class="logo-sub">FAST LINK ENGINE</span>
+      </span>
+    </a>
 
-        <nav class="navbar">
-          <a href="/">Home</a>
-          <a href="#section2">About</a>
-          <a href="#section4">Contact</a>
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
-        </nav>
-    </header>
-  </body>
-</html>
+    <!-- Pure CSS Mobile Menu Toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars icon-open"></i>
+      <i class="fa-solid fa-xmark icon-close"></i>
+    </label>
+
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/about" class="nav-item">About</a>
+        <a href="/contact" class="nav-item">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <% if (!user) { %>
+          <a href="/login" class="nav-btn-ghost">Log in</a>
+          <a href="/register" class="nav-btn-primary">
+            Get Started
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        <% } else { %>
+          <a href="/logout" class="nav-btn-danger">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+          </a>
+        <% } %>
+      </div>
+    </nav>
+  </div>
+</header>

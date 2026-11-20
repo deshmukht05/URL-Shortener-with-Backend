@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Registration Form</title>
-
-    <!-- Font Icon -->
     <link
       rel="stylesheet"
-      href="fonts/material-icon/css/material-design-iconic-font.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
 
     <div class="main">
-      <!-- Sign up form -->
+      <!-- Sign up Form -->
       <section class="signup">
         <div class="container-1">
           <div class="signup-content">
@@ -32,35 +28,61 @@
                 id="register-form"
               >
                 <div class="form-group">
-                  <label for="name"
-                    ><i class="zmdi zmdi-account material-icons-name"></i
-                  ></label>
+                  <label for="name" aria-label="Name">
+                    <i class="fa-solid fa-user"></i>
+                  </label>
                   <input
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Your Name"
+                    required
                   />
                 </div>
+
                 <div class="form-group">
-                  <label for="email"><i class="zmdi zmdi-email"></i></label>
+                  <label for="email" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                  </label>
                   <input
                     type="email"
                     name="email"
                     autocomplete="off"
                     id="email"
                     placeholder="Your Email"
+                    required
                   />
                 </div>
-                <div class="form-group">
-                  <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="pass"
-                    placeholder="Password"
-                  />
+
+                <!-- Password Input + Strength Meter -->
+                <div class="password-field-wrapper">
+                  <div class="form-group password-group">
+                    <label for="pass" aria-label="Password">
+                      <i class="fa-solid fa-lock"></i>
+                    </label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="pass"
+                      placeholder="Password"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="password-toggle"
+                      data-target="pass"
+                      aria-label="Toggle password visibility"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
                 </div>
+
+                <% if (errors && errors.length > 0) { %>
+                  <% errors.forEach((error) => { %>
+                    <p class="flash-error"><%= error %></p>
+                  <% }) %>
+                <% } %>
 
                 <div>
                   <input
@@ -72,12 +94,36 @@
                   />
                 </div>
               </form>
+
+              <div class="social-login">
+                <div class="social-divider">
+                  <span class="social-label">Or sign up with</span>
+                </div>
+                <ul class="socials">
+                  <li>
+                    <a href="#" aria-label="Sign up with Facebook">
+                      <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/github" aria-label="Sign up with GitHub">
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/google" aria-label="Sign up with Google">
+                      <i class="fa-brands fa-google"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
+
             <div class="signup-image">
               <figure>
-                <img src="images/signup-image.jpg" alt="sing up image" />
+                <img src="/images/signup-image.jpg" alt="sign up image" />
               </figure>
-              <a href="/login" class="signup-image-link">I am already member</a>
+              <a href="/login" class="signup-image-link">I am already a member</a>
             </div>
           </div>
         </div>
@@ -85,6 +131,5 @@
     </div>
 
     <%- include('../partials/footer.ejs') %>
-    <!-- JS -->
   </body>
 </html>

@@ -1,10 +1,15 @@
 import crypto from "crypto";
-import { getAllShortLinks, getShortLinkByShortCode, insertShortLink } from "../services/shortener.services.js";
+import {
+  getAllShortLinks,
+  getShortLinkByShortCode,
+  insertShortLink,
+} from "../services/shortener.services.js";
 
 export const getShortenerPage = async (req, res) => {
   try {
     const links = await getAllShortLinks();
-    return res.render("index", {links, host: req.host})
+
+    return res.render("index", { links, host: req.host });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Internal Server Error.");
@@ -23,7 +28,7 @@ export const postURLShortener = async (req, res) => {
         .send("Short code already exists. Please choose another.");
     }
 
-    await insertShortLink({url, finalShortCode});
+    await insertShortLink({ url, finalShortCode });
     return res.redirect("/");
   } catch (error) {
     console.error(error);

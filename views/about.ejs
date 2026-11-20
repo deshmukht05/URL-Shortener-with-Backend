@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — URLShortener</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('../views/partials/header.ejs') %>
+
+    <main class="page-wrapper">
+      <!-- Hero Section -->
+      <section class="page-hero">
+        <span class="hero-eyebrow">
+          <i class="fa-solid fa-sparkles"></i>
+          Built for Speed &amp; Clarity
+        </span>
+        <h1 class="page-title">
+          Making every link <span class="text-gradient">shorter, cleaner, and smarter</span>
+        </h1>
+        <p class="page-subtitle">
+          URLShortener turns messy, hard-to-share web addresses into sleek, memorable
+          short links. Whether you're sharing a portfolio, running a campaign, or sending
+          resources to a team, we keep your links fast and effortless.
+        </p>
+      </section>
+
+      <!-- Metrics Bar -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">1.2M+</span>
+          <span class="stat-label">Links Shortened</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">99.98%</span>
+          <span class="stat-label">Redirect Uptime</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">&lt; 25ms</span>
+          <span class="stat-label">Avg. Redirect Time</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">45K+</span>
+          <span class="stat-label">Active Creators</span>
+        </div>
+      </section>
+
+      <!-- Our Story & Mission -->
+      <section class="about-story">
+        <div class="story-content">
+          <span class="section-tag">Our Mission</span>
+          <h2 class="section-heading">Why we built URLShortener</h2>
+          <p>
+            Long URLs filled with tracking parameters break layouts, look untrustworthy
+            in messages, and are impossible to remember. We built URLShortener to give
+            developers, marketers, and everyday users a distraction-free tool that creates
+            reliable short links in a single click.
+          </p>
+          <p>
+            No bloated dashboards, no intrusive pop-ups—just clean custom aliases,
+            instant clipboard copying, and secure account management so your links stay
+            organized in one place.
+          </p>
+
+          <div class="story-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Zero ads or interstitial redirect delays</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Custom short codes for branded sharing</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Secure authentication with OAuth support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-header">
+            <span class="dot red"></span>
+            <span class="dot amber"></span>
+            <span class="dot green"></span>
+            <span class="story-card-title">link-engine.config</span>
+          </div>
+          <div class="story-card-body">
+            <div class="demo-transform">
+              <span class="demo-label">Before</span>
+              <code class="demo-url old">
+                https://example.com/products/2026/spring-collection?utm_source=newsletter&amp;ref=839201
+              </code>
+            </div>
+            <div class="demo-arrow">
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <div class="demo-transform">
+              <span class="demo-label accent">After</span>
+              <code class="demo-url new">
+                <i class="fa-solid fa-link"></i>
+                urlshort.io/spring26
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="content-section">
+        <div class="section-header-center">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-heading">Three steps from clutter to clean</h2>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-paste"></i>
+            </div>
+            <h3>Paste Your Long URL</h3>
+            <p>
+              Drop any valid web address into the shortener input box on the homepage.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon secondary">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3>Add a Custom Alias</h3>
+            <p>
+              Pick your own memorable short code—or leave it blank to generate one
+              automatically.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <h3>Copy &amp; Share Anywhere</h3>
+            <p>
+              Grab your shortened link with one click and share it across socials, emails,
+              or docs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Features -->
+      <section class="content-section">
+        <div class="section-header-center">
+          <span class="section-tag">Core Features</span>
+          <h2 class="section-heading">Everything you need, nothing you don't</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3>Lightning-Fast Redirects</h3>
+            <p>
+              Optimized routing resolves your short codes in milliseconds with minimal
+              server overhead.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon secondary">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h3>Custom Short Codes</h3>
+            <p>
+              Turn random strings into readable slugs like <code>/resume</code> or
+              <code>/launch</code>.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Secure &amp; Private</h3>
+            <p>
+              Protected authentication keeps your personal link library tied safely to
+              your account.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon secondary">
+              <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+            <h3>Works on Every Device</h3>
+            <p>
+              A responsive interface built to feel native on desktop, tablet, and mobile
+              browsers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom CTA -->
+      <section class="cta-banner">
+        <div class="cta-content">
+          <h2>Ready to shorten your first link?</h2>
+          <p>
+            Create a free account in seconds and start organizing all your links in one
+            clean workspace.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <% if (!user) { %>
+            <a href="/register" class="cta-btn-primary">
+              Get Started Free
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="/contact" class="cta-btn-secondary">Contact Us</a>
+          <% } else { %>
+            <a href="/" class="cta-btn-primary">
+              Go to Dashboard
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="/contact" class="cta-btn-secondary">Contact Support</a>
+          <% } %>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../views/partials/footer.ejs') %>
+  </body>
+</html>
