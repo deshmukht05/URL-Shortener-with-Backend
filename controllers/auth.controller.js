@@ -5,6 +5,7 @@ import {
   hashPassword,
   verifyPassword,
 } from "../services/auth.services.js";
+import { loginUserSchema, registerUserSchema } from "../validators/auth-validator.js";
 
 export const getRegisterPage = (req, res) => {
   if (req.user) return res.redirect("/");
@@ -21,7 +22,16 @@ export const getLoginPage = (req, res) => {
 export const postRegisterPage = async (req, res) => {
   if (req.user) return res.redirect("/");
 
-  const { name, email, password } = req.body;
+  const result = registerUserSchema.safeParse(req.body);
+
+  if (!result.success) {
+    const errors = result.error.issues.map((issue) => issue.message);
+    req.flash("errors", errors);
+    res.redirect("/register");
+  }
+
+  const { name, email, password } = result.data;
+
   const userExists = await getUserByEmail(email);
 
   if (userExists) {
@@ -31,7 +41,6 @@ export const postRegisterPage = async (req, res) => {
 
   const hashedPassword = await hashPassword(password);
   const [user] = await createUser({ name, email, password: hashedPassword });
-  console.log(user);
 
   res.redirect("/login");
 };
@@ -39,7 +48,16 @@ export const postRegisterPage = async (req, res) => {
 export const postLogin = async (req, res) => {
   if (req.user) return res.redirect("/");
 
-  const { email, password } = req.body;
+  const result = loginUserSchema.safeParse(req.body);
+
+  if (!result.success) {
+    const errors = result.error.issues.map((issue) => issue.message);
+    req.flash("errors", errors);
+    res.redirect("/login");
+  }
+
+  const { email, password } = result.data;
+
   const user = await getUserByEmail(email);
   console.log(user);
 
@@ -77,22 +95,27 @@ export const logoutUser = (req, res) => {
 };
 
 export const getAboutPage = (req, res) => {
-  return res.render("about", {user: req.user})
-}
+  return res.render("about", { user: req.user });
+};
 
 export const getContactPage = (req, res) => {
   return res.render("contact", {
     user: req.user,
     error: null,
-    success: null
-  })
-}
+    success: null,
+  });
+};
 
 export const postContactPage = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
-    if (!name?.trim() || !email?.trim() || !subject?.trim() || !message?.trim()) {
+    if (
+      !name?.trim() ||
+      !email?.trim() ||
+      !subject?.trim() ||
+      !message?.trim()
+    ) {
       return res.status(400).render("contact", {
         user: req.user,
         success: null,
@@ -105,7 +128,8 @@ export const postContactPage = async (req, res) => {
 
     return res.status(200).render("contact", {
       user: req.user,
-      success: "Thanks for reaching out! We'll get back to you within 24 hours.",
+      success:
+        "Thanks for reaching out! We'll get back to you within 24 hours.",
       error: null,
     });
   } catch (err) {

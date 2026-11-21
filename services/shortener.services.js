@@ -2,8 +2,8 @@ import { eq } from "drizzle-orm";
 import { db } from "../config/db.js";
 import { shortLinksTable } from "../drizzle/schema.js";
 
-export const getAllShortLinks = async () => {
-  return await db.select().from(shortLinksTable);
+export const getAllShortLinks = async (userId) => {
+  return await db.select().from(shortLinksTable).where(eq(shortLinksTable.userId, userId));
 };
 
 export const getShortLinkByShortCode = async (shortCode) => {
@@ -14,6 +14,6 @@ export const getShortLinkByShortCode = async (shortCode) => {
   return result;
 };
 
-export const insertShortLink = ({ url, finalShortCode }) => {
-  return db.insert(shortLinksTable).values({ url, shortCode: finalShortCode });
+export const insertShortLink = ({ url, finalShortCode, userId }) => {
+  return db.insert(shortLinksTable).values({ url, shortCode: finalShortCode, userId });
 };

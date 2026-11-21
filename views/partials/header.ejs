@@ -43,12 +43,6 @@
     </label>
 
     <nav class="navbar">
-      <div class="nav-links">
-        <a href="/" class="nav-item">Home</a>
-        <a href="/about" class="nav-item">About</a>
-        <a href="/contact" class="nav-item">Contact</a>
-      </div>
-
       <div class="nav-actions">
         <% if (!user) { %>
           <a href="/login" class="nav-btn-ghost">Log in</a>
@@ -57,6 +51,11 @@
             <i class="fa-solid fa-arrow-right"></i>
           </a>
         <% } else { %>
+          <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/contact" class="nav-item">Contact</a>
+          </div>
           <a href="/logout" class="nav-btn-danger">
             <i class="fa-solid fa-right-from-bracket"></i>
             Logout

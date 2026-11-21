@@ -12,13 +12,6 @@
   </head>
   <body>
     <%- include('../views/partials/header.ejs') %>
-
-    <% if (user) { %>
-      <h2>You are Logged In</h2>
-    <% } else { %>
-      <h2>You are not Logged In</h2>
-    <% } %>
-
     <div class="container">
       <h1>URL Shortener</h1>
 
@@ -58,49 +51,60 @@
       <hr />
 
       <h2>Shortened URLs</h2>
-      <ul class="links">
-        <% links.forEach(({ shortCode, url }) => { %>
-          <li class="link-card">
-            <!-- Shortened URL Row -->
-            <div class="link-row">
-              <div class="link-info">
-                <span class="link-badge">Short</span>
-                <a href="/<%= shortCode %>" target="_blank" class="short-link">
-                  <%= host %>/<%= shortCode %>
-                </a>
-              </div>
-              <button
-                type="button"
-                class="copy-btn"
-                data-url="<%= host %>/<%= shortCode %>"
-                title="Copy shortened URL"
-                aria-label="Copy shortened URL"
-              >
-                <i class="fa-regular fa-copy"></i>
-              </button>
-            </div>
 
-            <!-- Entered / Original URL Row -->
-            <div class="link-row original-row">
-              <div class="link-info">
-                <span class="link-badge original">Original</span>
-                <span class="original-link" title="<%= url %>">
-                  <%= url %>
-                </span>
+      <% if (!links || links.length === 0) { %>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <i class="fa-solid fa-link-slash"></i>
+          </div>
+          <h3>No URLs added yet</h3>
+          <p>You haven't shortened any links yet. Paste a URL above to create your first short link.</p>
+        </div>
+      <% } else { %>
+        <ul class="links">
+          <% links.forEach(({ shortCode, url }) => { %>
+            <li class="link-card">
+              <!-- Shortened URL Row -->
+              <div class="link-row">
+                <div class="link-info">
+                  <span class="link-badge">Short</span>
+                  <a href="/<%= shortCode %>" target="_blank" class="short-link">
+                    <%= host %>/<%= shortCode %>
+                  </a>
+                </div>
+                <button
+                  type="button"
+                  class="copy-btn"
+                  data-url="<%= host %>/<%= shortCode %>"
+                  title="Copy shortened URL"
+                  aria-label="Copy shortened URL"
+                >
+                  <i class="fa-regular fa-copy"></i>
+                </button>
               </div>
-              <button
-                type="button"
-                class="copy-btn copy-btn-secondary"
-                data-url="<%= url %>"
-                title="Copy original URL"
-                aria-label="Copy original URL"
-              >
-                <i class="fa-regular fa-copy"></i>
-              </button>
-            </div>
-          </li>
-        <% }) %>
-      </ul>
+
+              <!-- Entered / Original URL Row -->
+              <div class="link-row original-row">
+                <div class="link-info">
+                  <span class="link-badge original">Original</span>
+                  <span class="original-link" title="<%= url %>">
+                    <%= url %>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  class="copy-btn copy-btn-secondary"
+                  data-url="<%= url %>"
+                  title="Copy original URL"
+                  aria-label="Copy original URL"
+                >
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
     </div>
 
     <%- include('../views/partials/footer.ejs') %>
